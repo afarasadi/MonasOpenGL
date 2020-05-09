@@ -18,7 +18,19 @@
     <ClCompile Include="..\deps\include\glad\glad.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Demo.cpp">
+    <ClCompile Include="Texture.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Shader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Display.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="RenderEngine.cpp">
@@ -26,10 +38,28 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="vertexShader.vert">
+    <None Include="box.vert">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="fragmentShader.frag">
+    <None Include="box.frag">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Triangle.frag">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Triangle.vert">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="PlainTriangle.frag">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="PlainTriangle.vert">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Texture.frag">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Texture.vert">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
@@ -43,12 +73,39 @@
     <Image Include="lego_green.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="lego_mix.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\grass.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Demo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="RenderEngine.h">
+    <ClInclude Include="Camera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Shader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Transform.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Box.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Display.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

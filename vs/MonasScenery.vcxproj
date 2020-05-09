@@ -145,21 +145,42 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\deps\include\glad\glad.c" />
-    <ClCompile Include="Demo.cpp" />
+    <ClCompile Include="Display.cpp" />
     <ClCompile Include="RenderEngine.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Mesh.cpp" />
+    <ClCompile Include="Shader.cpp" />
+    <ClCompile Include="Texture.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="fragmentShader.frag" />
-    <None Include="vertexShader.vert" />
+    <None Include="box.frag" />
+    <None Include="box.vert" />
+    <None Include="PlainTriangle.frag" />
+    <None Include="PlainTriangle.vert" />
+    <None Include="Texture.frag" />
+    <None Include="Texture.vert" />
+    <None Include="Triangle.frag" />
+    <None Include="Triangle.vert" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="body.png" />
     <Image Include="lego_green.png" />
+    <Image Include="lego_mix.png" />
     <Image Include="marble.png" />
+    <Image Include="res\grass.png" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Box.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="Camera.h" />
     <ClInclude Include="Demo.h" />
-    <ClInclude Include="RenderEngine.h" />
+    <ClInclude Include="Display.h" />
+    <ClInclude Include="Engine.h" />
+    <ClInclude Include="Mesh.h" />
+    <ClInclude Include="Shader.h" />
+    <ClInclude Include="Texture.h" />
+    <ClInclude Include="Transform.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

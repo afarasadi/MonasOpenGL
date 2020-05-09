@@ -1,1 +1,18 @@
 .vs
+*.slo
+*.lo
+*.o
+*.so
+*.dylib
+*.lai
+*.la
+*.a
+
+# Visual Studio Files
+vs/Debug
+vs/Release
+*.suo
+*.csproj.user
+*.vbproj.user
+vs/ipch
+*sdf

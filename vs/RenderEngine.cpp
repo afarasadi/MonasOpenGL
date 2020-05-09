@@ -1,244 +1,276 @@
-#include "RenderEngine.h"
-RenderEngine::RenderEngine() {
+#pragma once
+#include "Engine.h"
+#include "Shader.h"
+#include "Texture.h"
+#include "Transform.h"
+#include "Camera.h"
+#include "Object\LantaiTingkatSatu.h"
+#include "Object\LantaiTingkatDua.h"
+#include "Object\LantaiTingkatTiga.h"
+#include "Object\TempatTowerBawah.h"
+#include "Object\TempatTowerTengah.h"
+#include "Object\TempatTowerAtas.h"
+#include "Object\TowerMonasTengah.h"
+#include "Object\TowerMonasAtas.h"
+#include "Object\TowerMonasTempatPucuk.h"
+#include "Object\TowerMonasKotakPucuk.h"
+#include "Object\TowerMonasPucuk.h"
+#include "Object\Plane.h"
+
+
+#define _USE_MATH_DEFINES
+#include <math.h>
+#include <vector>
+
+
+Mesh* lantaiTingkatSatu;
+Shader* lantaiTingkatSatuShader;
+Texture* lantaiTingkatSatuTexture;
+Transform* lantaiTingkatSatuTransform;
+
+Mesh* lantaiTingkatDua;
+Shader* lantaiTingkatDuaShader;
+Texture* lantaiTingkatDuaTexture;
+Transform* lantaiTingkatDuaTransform;
+
+Mesh* lantaiTingkatTiga;
+Shader* lantaiTingkatTigaShader;
+Texture* lantaiTingkatTigaTexture;
+Transform* lantaiTingkatTigaTransform;
+
+Mesh* tempatTowerBawah;
+Shader* tempatTowerBawahShader;
+Texture* tempatTowerBawahTexture;
+Transform* tempatTowerBawahTransform;
+
+Mesh* tempatTowerTengah;
+Shader* tempatTowerTengahShader;
+Texture* tempatTowerTengahTexture;
+Transform* tempatTowerTengahTransform;
+
+
+Mesh* tempatTowerAtas;
+Shader* tempatTowerAtasShader;
+Texture* tempatTowerAtasTexture;
+Transform* tempatTowerAtasTransform;
+
+Mesh* towerMonasTengah;
+Shader* towerMonasTengahShader;
+Texture* towerMonasTengahTexture;
+Transform* towerMonasTengahTransform;
+
+
+Mesh* towerMonasKotakPucuk;
+Shader* towerMonasKotakPucukShader;
+Texture* towerMonasKotakPucukTexture;
+Transform* towerMonasKotakPucukTextureTransform;
+
+Mesh* towerMonasPucuk;
+Shader* towerMonasPucukShader;
+Texture* towerMonasPucukTexture;
+Transform* towerMonasPucukTransform;
+
+Mesh* plane;
+Shader* planeShader;
+Texture* planeTexture;
+Transform* planeTransform;
+
+
+Camera* camera;
+
+Light* light;
+
+float posCamX = 0;
+float posCamY = 2;
+float posCamZ = 5;
+
+float viewCamX = 0.0f, viewCamY = 0.0f, viewCamZ = 1.0f;
+float speed = 0.02f;
+
+RenderEngine::RenderEngine(int width, int height, const char* title, bool vsync, bool fullscreen) {
+	Start(width, height, title, vsync, fullscreen);
 }
 
-
-RenderEngine::~RenderEngine() {
-	glfwDestroyWindow(window);
-}
-
-
-
-void RenderEngine::Start(const char* title, unsigned int width, unsigned int height, bool vsync, bool fullscreen) {
-
-	// set app configuration
-	this->screenHeight = height;
-	this->screenWidth = width;
-
-	// glfw: initialize and configure
-	// ------------------------------
-	glfwInit();
-	glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-
-	// glfw window creation
-	// --------------------
-	GLFWmonitor* monitor = glfwGetPrimaryMonitor();
-	window = glfwCreateWindow(this->screenWidth, this->screenHeight, title, fullscreen ? monitor : NULL, NULL);
-	if (window == NULL)
-	{
-		Err("Failed to create GLFW window");
-	}
-
-	// set window position on center of screen
-	// ---------------------------------------
-	if (!fullscreen) {
-		const GLFWvidmode* mode = glfwGetVideoMode(monitor);
-		glfwSetWindowPos(window, mode->width / 4, mode->height / 4);
-	}
-
-	// set opengl context
-	// ------------------
-	glfwMakeContextCurrent(window);
-
-	// glad: load all OpenGL function pointers
-	// ---------------------------------------
-	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
-	{
-		Err("Failed to initialize GLAD");
-	}
-
-	// set vsync
-	// ---------
-	glfwSwapInterval(vsync ? 1 : 0);
-
-	// user defined function
-	// ---------------------
-	Init();
-
-	lastFrame = glfwGetTime() * 1000;
-
-	// render loop
-	// -----------
-	while (!glfwWindowShouldClose(window)) {
-		// Calculate framerate and frametime
-		double deltaTime = GetDeltaTime();
-		GetFPS();
-
-		// user defined function
-		// ---------------------
-		ProcessInput(window);
-		Update(deltaTime);
-		Render();
-
-		// glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
-		// -------------------------------------------------------------------------------
-		glfwSwapBuffers(window);
-		glfwPollEvents();
-
-		//Debug print framerate
-		PrintFrameRate();
-	}
-
-	// user defined function
-	// ---------------------
-	DeInit();
-
-	// glfw: terminate, clearing all previously allocated GLFW resources.
-	// ------------------------------------------------------------------
-	glfwTerminate();
-}
-
-double RenderEngine::GetDeltaTime()
+void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
-
-	double time = glfwGetTime() * 1000;
-	double delta = time - lastFrame;
-	lastFrame = time;
-
-	return delta;
-}
-
-void RenderEngine::GetFPS()
-{
-	if (glfwGetTime() * 1000 - last > 1000) {
-		fps = _fps;
-		_fps = 0;
-		last += 1000;
-	}
-	_fps++;
-}
-
-
-//Prints out an error message and exits the game
-void RenderEngine::Err(std::string errorString)
-{
-	std::cout << errorString << std::endl;
-	glfwTerminate();
-	exit(1);
-}
-
-static int frameCounter = 0;
-void RenderEngine::PrintFrameRate() {
-	//print only once every 60 frames
-	frameCounter++;
-	if (frameCounter == 60) {
-		std::cout << "FPS: " << fps << std::endl;
-		frameCounter = 0;
+	if (key == GLFW_KEY_ENTER && action == GLFW_PRESS) {
 	}
 }
 
-void RenderEngine::CheckShaderErrors(GLuint shader, std::string type)
+void RenderEngine::Init() {
+	glViewport(0, 0, this->screenWidth, this->screenHeight);
+	glfwSetInputMode(this->window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+	glfwSetKeyCallback(window, key_callback);
+
+	camera = new Camera(glm::vec3(posCamX, 0, posCamZ), 70.0f, (GLfloat)this->screenWidth / (GLfloat)this->screenHeight, 0.1f, 100.0f);
+
+
+	light = new Light();
+	light->x = 0.5f;
+	light->y = -0.6f;
+	light->z = -0.2f;
+
+	planeShader = new Shader("res/Triangle");
+	planeTexture = new Texture("res/lego_mix.png", GL_LINEAR_MIPMAP_NEAREST);
+	planeTransform = new Transform();
+	plane = Plane();
+
+	/*
+	TODO()
+	Tempat init objek => shader& texture
+	*/
+	lantaiTingkatSatuShader = new Shader("res/Triangle");
+	lantaiTingkatSatuTexture = new Texture("res/marble.png", GL_LINEAR_MIPMAP_NEAREST);
+	lantaiTingkatSatuTransform = new Transform();
+	lantaiTingkatSatu = LantaiTingkatSatu();
+
+
+
+	
+}
+
+void RenderEngine::DeInit() {
+	camera->~Camera();
+	planeShader->~Shader();
+	plane->~Mesh();
+}
+
+void MoveCameraY(float speed)
 {
-	GLint success;
-	GLchar infoLog[1024];
-	if (type != "PROGRAM")
-	{
-		glGetShaderiv(shader, GL_COMPILE_STATUS, &success);
-		if (!success)
-		{
-			glGetShaderInfoLog(shader, 1024, NULL, infoLog);
-			Err("| ERROR::::SHADER-COMPILATION-ERROR of type: " + type + "|\n" + infoLog + "\n| -- --------------------------------------------------- -- |");
+	speed *= 2;
+	float y = std::abs(viewCamY - posCamY);
+	// forward positive cameraspeed and backward negative -cameraspeed.
+	posCamY = posCamY + speed;
+	viewCamY = viewCamY + speed;
+}
+
+void MoveCameraXZ(float speed)
+{
+	float x = viewCamX - posCamX;
+	float z = viewCamZ - posCamZ;
+	// forward positive cameraspeed and backward negative -cameraspeed.
+	posCamX = posCamX + x * speed;
+	posCamZ = posCamZ + z * speed;
+	viewCamX = viewCamX + x * speed;
+	viewCamZ = viewCamZ + z * speed;
+}
+
+void StrafeCamera(float speed)
+{
+	float x = viewCamX - posCamX;
+	float z = viewCamZ - posCamZ;
+	float orthoX = -z;
+	float orthoZ = x;
+
+	// left positive cameraspeed and right negative -cameraspeed.
+	posCamX = posCamX + orthoX * speed;
+	posCamZ = posCamZ + orthoZ * speed;
+	viewCamX = viewCamX + orthoX * speed;
+	viewCamZ = viewCamZ + orthoZ * speed;
+}
+
+void RotateCamera(float speed)
+{
+	float x = viewCamX - posCamX;
+	float z = viewCamZ - posCamZ;
+	viewCamZ = (float)(posCamZ + glm::sin(speed) * x + glm::cos(speed) * z);
+	viewCamX = (float)(posCamX + glm::cos(speed) * x - glm::sin(speed) * z);
+}
+
+void RenderEngine::ProcessInput(GLFWwindow* window) {
+
+	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+		glfwSetWindowShouldClose(window, true);
+
+	if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS) {
+		MoveCameraY(speed);
+	}
+
+	if (glfwGetKey(window, GLFW_KEY_LEFT_CONTROL) == GLFW_PRESS) {
+		MoveCameraY(-speed);
+	}
+
+	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) {
+		MoveCameraXZ(speed);
+	}
+
+	if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) {
+		MoveCameraXZ(-speed);
+	}
+
+	if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) {
+		StrafeCamera(-speed);
+	}
+
+	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) {
+		StrafeCamera(speed);
+	}
+
+	double mouseX, mouseY;
+	double midX = screenWidth / 2;
+	double midY = screenHeight / 2;
+	float angleY = 0.0f;
+	float angleZ = 0.0f;
+
+	glfwGetCursorPos(window, &mouseX, &mouseY);
+	if ((mouseX != midX) && (mouseY != midY)) {
+		// Set mouse position
+		glfwSetCursorPos(window, midX, midY);
+
+		// Get the direction from the mouse cursor, set a resonable maneuvering speed
+		angleY = (float)((midX - mouseX)) / 1000;
+		angleZ = (float)((midY - mouseY)) / 1000;
+
+		// The higher the value is the faster the camera looks around.
+		viewCamY += angleZ * 2;
+
+		// limit the rotation around the y-axis
+		if ((viewCamY - posCamY) > 8) {
+			viewCamY = posCamY + 8;
 		}
-	}
-	else
-	{
-		glGetProgramiv(shader, GL_LINK_STATUS, &success);
-		if (!success)
-		{
-			glGetProgramInfoLog(shader, 1024, NULL, infoLog);
-			Err("| ERROR::::PROGRAM-LINKING-ERROR of type: " + type + "|\n" + infoLog + "\n| -- --------------------------------------------------- -- |");
+		if ((viewCamY - posCamY) < -8) {
+			viewCamY = posCamY - 8;
 		}
+
+		float x = viewCamX - posCamX;
+		float z = viewCamZ - posCamZ;
+		viewCamZ = (float)(posCamZ + glm::sin(-angleY) * x + glm::cos(-angleY) * z);
+		viewCamX = (float)(posCamX + glm::cos(-angleY) * x - glm::sin(-angleY) * z);
 	}
 }
 
-GLuint RenderEngine::BuildShader(const char* vertexPath, const char* fragmentPath, const char* geometryPath)
-{
-	// 1. Retrieve the vertex/fragment source code from filePath
-	std::string vertexCode, fragmentCode, geometryCode;
-	std::ifstream vShaderFile, fShaderFile, gShaderFile;
-	// ensures ifstream objects can throw exceptions:
-	vShaderFile.exceptions(std::ifstream::failbit | std::ifstream::badbit);
-	fShaderFile.exceptions(std::ifstream::failbit | std::ifstream::badbit);
-	gShaderFile.exceptions(std::ifstream::failbit | std::ifstream::badbit);
-	try
-	{
-		// Open files
-		vShaderFile.open(vertexPath);
-		fShaderFile.open(fragmentPath);
-		std::stringstream vShaderStream, fShaderStream;
-		// Read file's buffer contents into streams
-		vShaderStream << vShaderFile.rdbuf();
-		fShaderStream << fShaderFile.rdbuf();
-		// close file handlers
-		vShaderFile.close();
-		fShaderFile.close();
-		// Convert stream into string
-		vertexCode = vShaderStream.str();
-		fragmentCode = fShaderStream.str();
-		// If geometry shader path is present, also load a geometry shader
-		if (geometryPath != nullptr)
-		{
-			gShaderFile.open(geometryPath);
-			std::stringstream gShaderStream;
-			gShaderStream << gShaderFile.rdbuf();
-			gShaderFile.close();
-			geometryCode = gShaderStream.str();
-		}
-	}
-	catch (std::ifstream::failure e)
-	{
-		Err("ERROR::SHADER::FILE_NOT_SUCCESFULLY_READ");
-	}
-	const GLchar* vShaderCode = vertexCode.c_str();
-	const GLchar * fShaderCode = fragmentCode.c_str();
-	// 2. Compile shaders
-	GLuint vertex, fragment;
-	// Vertex Shader
-	vertex = glCreateShader(GL_VERTEX_SHADER);
-	glShaderSource(vertex, 1, &vShaderCode, NULL);
-	glCompileShader(vertex);
-	CheckShaderErrors(vertex, "VERTEX");
-	// Fragment Shader
-	fragment = glCreateShader(GL_FRAGMENT_SHADER);
-	glShaderSource(fragment, 1, &fShaderCode, NULL);
-	glCompileShader(fragment);
-	CheckShaderErrors(fragment, "FRAGMENT");
-	// If geometry shader is given, compile geometry shader
-	GLuint geometry;
-	if (geometryPath != nullptr)
-	{
-		const GLchar * gShaderCode = geometryCode.c_str();
-		geometry = glCreateShader(GL_GEOMETRY_SHADER);
-		glShaderSource(geometry, 1, &gShaderCode, NULL);
-		glCompileShader(geometry);
-		CheckShaderErrors(geometry, "GEOMETRY");
-	}
-	// Shader Program
-	GLuint program = glCreateProgram();
-	glAttachShader(program, vertex);
-	glAttachShader(program, fragment);
-	if (geometryPath != nullptr)
-		glAttachShader(program, geometry);
-	glLinkProgram(program);
-	CheckShaderErrors(program, "PROGRAM");
-	// Delete the shaders as they're linked into our program now and no longer necessery
-	glDeleteShader(vertex);
-	glDeleteShader(fragment);
-	if (geometryPath != nullptr)
-		glDeleteShader(geometry);
-	return program;
+void RenderEngine::Update(double deltaTime) {
+
+
+
 
 }
 
-void RenderEngine::UseShader(GLuint program)
-{
-	// Uses the current shader
-	glUseProgram(program);
+void RenderEngine::Render() {
+	Clear(0.35f, 0.87f, 0.92f, 0.0f);
+
+	camera->position.x = posCamX;
+	camera->position.y = posCamY;
+	camera->position.z = posCamZ;
+
+	camera->forward.x = viewCamX;
+	camera->forward.y = viewCamY;
+	camera->forward.z = viewCamZ;
+
+	/*
+		TODO()
+		panggil di tiap objek
+	*/
+	planeTexture->Bind();
+	planeShader->Bind();
+	planeShader->Update(*planeTransform, *camera, glm::vec3(light->x, light->y, light->z));
+	plane->Draw();
+
+
+	lantaiTingkatSatuTexture->Bind();
+	lantaiTingkatSatuShader->Bind();
+	lantaiTingkatSatuShader->Update(*lantaiTingkatSatuTransform, *camera, glm::vec3(light->x, light->y, light->z), glm::vec4(0.0f, 0.0f, 1.0f, 1.0f));
+
+	lantaiTingkatSatu->Draw();
+
 }
-
-
-
-
