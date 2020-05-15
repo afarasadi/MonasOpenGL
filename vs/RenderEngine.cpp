@@ -21,6 +21,7 @@
 #include "Object\RumputAtas.h"
 #include "Object\RumputKanan.h"
 #include "Object\RumputKiri.h"
+#include "Object\BisBody.h"
 
 
 
@@ -28,6 +29,10 @@
 #include <math.h>
 #include <vector>
 
+Mesh* bisBody;
+Shader* bisBodyShader;
+Texture* bisBodyTexture;
+Transform* bisBodyTransform;
 
 Mesh* lantaiTingkatSatu;
 Shader* lantaiTingkatSatuShader;
@@ -233,6 +238,11 @@ void RenderEngine::Init() {
 	rumputKiriTexture = new Texture("res/marble.png", GL_LINEAR_MIPMAP_NEAREST);
 	rumputKiriTransform = new Transform();
 	rumputKiri = RumputKiri();
+
+	bisBodyShader = new Shader("res/Triangle");
+	bisBodyTexture = new Texture("res/marble.png", GL_LINEAR_MIPMAP_NEAREST);
+	bisBodyTransform = new Transform();
+	bisBody = BisBody();
 }
 
 void RenderEngine::DeInit() {
@@ -462,4 +472,10 @@ void RenderEngine::Render() {
 	rumputKiriShader->Update(*rumputKiriTransform, *camera, glm::vec3(light->x, light->y, light->z), glm::vec4(0.0f, 0.0f, 1.0f, 1.0f));
 
 	rumputKiri->Draw();
+
+	bisBodyTexture->Bind();
+	bisBodyShader->Bind();
+	bisBodyShader->Update(*bisBodyTransform, *camera, glm::vec3(light->x, light->y, light->z), glm::vec4(0.0f, 0.0f, 1.0f, 1.0f));
+
+	bisBody->Draw();
 }
