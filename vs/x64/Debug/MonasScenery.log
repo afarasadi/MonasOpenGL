@@ -1,0 +1,37 @@
+﻿  glad.c
+  Display.cpp
+  RenderEngine.cpp
+  Main.cpp
+  Mesh.cpp
+D:\Grafika Komputer dan Visualisasi\Arasfix\MonasOpenGL\vs\Mesh.cpp(22,20): warning C4018: '<': signed/unsigned mismatch
+D:\Grafika Komputer dan Visualisasi\Arasfix\MonasOpenGL\vs\Mesh.cpp(32,21): warning C4018: '<': signed/unsigned mismatch
+  Shader.cpp
+D:\Grafika Komputer dan Visualisasi\Arasfix\MonasOpenGL\vs\Shader.cpp(113,28): warning C4267: '=': conversion from 'size_t' to 'GLint', possible loss of data
+  Texture.cpp
+  Generating Code...
+Display.obj : error LNK2019: unresolved external symbol glfwInit referenced in function "public: void __cdecl Display::Start(int,int,char const *,bool,bool)" (?Start@Display@@QEAAXHHPEBD_N1@Z)
+Display.obj : error LNK2019: unresolved external symbol glfwTerminate referenced in function "public: void __cdecl Display::Err(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?Err@Display@@QEAAXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
+Display.obj : error LNK2019: unresolved external symbol glfwGetPrimaryMonitor referenced in function "public: void __cdecl Display::Start(int,int,char const *,bool,bool)" (?Start@Display@@QEAAXHHPEBD_N1@Z)
+Display.obj : error LNK2019: unresolved external symbol glfwGetVideoMode referenced in function "public: void __cdecl Display::Start(int,int,char const *,bool,bool)" (?Start@Display@@QEAAXHHPEBD_N1@Z)
+Display.obj : error LNK2019: unresolved external symbol glfwWindowHint referenced in function "public: void __cdecl Display::Start(int,int,char const *,bool,bool)" (?Start@Display@@QEAAXHHPEBD_N1@Z)
+Display.obj : error LNK2019: unresolved external symbol glfwCreateWindow referenced in function "public: void __cdecl Display::Start(int,int,char const *,bool,bool)" (?Start@Display@@QEAAXHHPEBD_N1@Z)
+Display.obj : error LNK2019: unresolved external symbol glfwDestroyWindow referenced in function "public: __cdecl Display::~Display(void)" (??1Display@@QEAA@XZ)
+Display.obj : error LNK2019: unresolved external symbol glfwWindowShouldClose referenced in function "public: void __cdecl Display::Start(int,int,char const *,bool,bool)" (?Start@Display@@QEAAXHHPEBD_N1@Z)
+Display.obj : error LNK2019: unresolved external symbol glfwSetWindowPos referenced in function "public: void __cdecl Display::Start(int,int,char const *,bool,bool)" (?Start@Display@@QEAAXHHPEBD_N1@Z)
+Display.obj : error LNK2019: unresolved external symbol glfwPollEvents referenced in function "public: void __cdecl Display::Start(int,int,char const *,bool,bool)" (?Start@Display@@QEAAXHHPEBD_N1@Z)
+Display.obj : error LNK2019: unresolved external symbol glfwGetTime referenced in function "public: double __cdecl Display::GetDeltaTime(void)" (?GetDeltaTime@Display@@QEAANXZ)
+Display.obj : error LNK2019: unresolved external symbol glfwMakeContextCurrent referenced in function "public: void __cdecl Display::Start(int,int,char const *,bool,bool)" (?Start@Display@@QEAAXHHPEBD_N1@Z)
+Display.obj : error LNK2019: unresolved external symbol glfwSwapBuffers referenced in function "public: void __cdecl Display::Start(int,int,char const *,bool,bool)" (?Start@Display@@QEAAXHHPEBD_N1@Z)
+Display.obj : error LNK2019: unresolved external symbol glfwSwapInterval referenced in function "public: void __cdecl Display::Start(int,int,char const *,bool,bool)" (?Start@Display@@QEAAXHHPEBD_N1@Z)
+Display.obj : error LNK2019: unresolved external symbol glfwGetProcAddress referenced in function "public: void __cdecl Display::Start(int,int,char const *,bool,bool)" (?Start@Display@@QEAAXHHPEBD_N1@Z)
+RenderEngine.obj : error LNK2019: unresolved external symbol glfwSetWindowShouldClose referenced in function "private: virtual void __cdecl RenderEngine::ProcessInput(struct GLFWwindow *)" (?ProcessInput@RenderEngine@@EEAAXPEAUGLFWwindow@@@Z)
+RenderEngine.obj : error LNK2019: unresolved external symbol glfwSetInputMode referenced in function "private: virtual void __cdecl RenderEngine::Init(void)" (?Init@RenderEngine@@EEAAXXZ)
+RenderEngine.obj : error LNK2019: unresolved external symbol glfwGetKey referenced in function "private: virtual void __cdecl RenderEngine::ProcessInput(struct GLFWwindow *)" (?ProcessInput@RenderEngine@@EEAAXPEAUGLFWwindow@@@Z)
+RenderEngine.obj : error LNK2019: unresolved external symbol glfwGetCursorPos referenced in function "private: virtual void __cdecl RenderEngine::ProcessInput(struct GLFWwindow *)" (?ProcessInput@RenderEngine@@EEAAXPEAUGLFWwindow@@@Z)
+RenderEngine.obj : error LNK2019: unresolved external symbol glfwSetCursorPos referenced in function "private: virtual void __cdecl RenderEngine::ProcessInput(struct GLFWwindow *)" (?ProcessInput@RenderEngine@@EEAAXPEAUGLFWwindow@@@Z)
+RenderEngine.obj : error LNK2019: unresolved external symbol glfwSetKeyCallback referenced in function "private: virtual void __cdecl RenderEngine::Init(void)" (?Init@RenderEngine@@EEAAXXZ)
+Texture.obj : error LNK2019: unresolved external symbol SOIL_load_image referenced in function "public: __cdecl Texture::Texture(char const *,int)" (??0Texture@@QEAA@PEBDH@Z)
+Texture.obj : error LNK2019: unresolved external symbol SOIL_free_image_data referenced in function "public: __cdecl Texture::Texture(char const *,int)" (??0Texture@@QEAA@PEBDH@Z)
+D:\Grafika Komputer dan Visualisasi\Arasfix\MonasOpenGL\deps\lib\SOIL.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
+D:\Grafika Komputer dan Visualisasi\Arasfix\MonasOpenGL\deps\lib\glfw3.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
+D:\Grafika Komputer dan Visualisasi\Arasfix\MonasOpenGL\vs\x64\Debug\MonasScenery.exe : fatal error LNK1120: 23 unresolved externals

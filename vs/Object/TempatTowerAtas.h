@@ -7,35 +7,35 @@ static Mesh* TempatTowerAtas()
 	Vertex vertices[] = {
 		// format position, tex coords
 		// front
-		Vertex(glm::vec3(-0.5, -0.5, 0.5), glm::vec2(0, 0)),  // 0
-		Vertex(glm::vec3(0.5, -0.5, 0.5), glm::vec2(1, 0)),   // 1
-		Vertex(glm::vec3(0.5,  0.5, 0.5), glm::vec2(1, 1)),   // 2
-		Vertex(glm::vec3 (-0.5,  0.5, 0.5), glm::vec2(0, 1)),  // 3
+				Vertex(glm::vec3(-3, 3, 3), glm::vec2(0, 0)),  // 0
+				Vertex(glm::vec3(3, 3, 3), glm::vec2(1, 0)),   // 1
+				Vertex(glm::vec3(3,  3.1, 3), glm::vec2(1, 1)),   // 2
+				Vertex(glm::vec3(-3,  3.1, 3), glm::vec2(0, 1)),  // 3
 
 		// right
-				Vertex(glm::vec3(0.5,  0.5,  0.5), glm::vec2(0, 0)),  // 4
-				Vertex(glm::vec3(0.5,  0.5, -0.5), glm::vec2(1, 0)),  // 5
-				Vertex(glm::vec3(0.5, -0.5, -0.5), glm::vec2(1, 1)),  // 6
-				Vertex(glm::vec3(0.5, -0.5,  0.5), glm::vec2(0, 1)),  // 7
+				Vertex(glm::vec3(3,  3.1,  3), glm::vec2(0, 0)),  // 4
+				Vertex(glm::vec3(3,  3.1, -3), glm::vec2(1, 0)),  // 5
+				Vertex(glm::vec3(3, 3, -3), glm::vec2(1, 1)),  // 6
+				Vertex(glm::vec3(3, 3,  3), glm::vec2(0, 1)),  // 7
 
 
 		// back
-				Vertex(glm::vec3(-0.5, -0.5, -0.5), glm::vec2(0, 0)), // 8 
-				Vertex(glm::vec3(0.5,  -0.5, -0.5), glm::vec2(1, 0)), // 9
-				Vertex(glm::vec3(0.5,   0.5, -0.5), glm::vec2(1, 1)), // 10
-				Vertex(glm::vec3(-0.5,  0.5, -0.5), glm::vec2(0, 1)), // 11
+				Vertex(glm::vec3(-3, 3, -3), glm::vec2(0, 0)), // 8 
+				Vertex(glm::vec3(3,  3, -3), glm::vec2(1, 0)), // 9
+				Vertex(glm::vec3(3,   3.1, -3), glm::vec2(1, 1)), // 10
+				Vertex(glm::vec3(-3,  3.1, -3), glm::vec2(0, 1)), // 11
 
 		// left
-				Vertex(glm::vec3(-0.5, -0.5, -0.5), glm::vec2(0, 0)), // 12
-				Vertex(glm::vec3(-0.5, -0.5,  0.5), glm::vec2(1, 0)), // 13
-				Vertex(glm::vec3(-0.5,  0.5,  0.5), glm::vec2(1, 1)), // 14
-				Vertex(glm::vec3(-0.5,  0.5, -0.5), glm::vec2(0, 1)), // 15
+				Vertex(glm::vec3(-3, 3, -3), glm::vec2(0, 0)), // 12
+				Vertex(glm::vec3(-3, 3,  3), glm::vec2(1, 0)), // 13
+				Vertex(glm::vec3(-3,  3.1,  3), glm::vec2(1, 1)), // 14
+				Vertex(glm::vec3(-3,  3.1, -3), glm::vec2(0, 1)), // 15
 
 		// upper
-				Vertex(glm::vec3(0.5, 0.5,  0.5), glm::vec2(0, 0)),   // 16
-				Vertex(glm::vec3(-0.5, 0.5,  0.5), glm::vec2(1, 0)),  // 17
-				Vertex(glm::vec3(-0.5, 0.5, -0.5), glm::vec2(1, 1)),  // 18
-				Vertex(glm::vec3(0.5, 0.5, -0.5), glm::vec2(0, 0)),   // 19
+				Vertex(glm::vec3(3, 3.1,  3), glm::vec2(0, 0)),   // 16
+				Vertex(glm::vec3(-3, 3.1,  3), glm::vec2(1, 0)),  // 17
+				Vertex(glm::vec3(-3, 3.1, -3), glm::vec2(1, 1)),  // 18
+				Vertex(glm::vec3(3, 3.1, -3), glm::vec2(0, 1)),   // 19
 
 		// bottom
 				Vertex(glm::vec3(-0.5, -0.5, -0.5), glm::vec2(0, 0)), // 20
