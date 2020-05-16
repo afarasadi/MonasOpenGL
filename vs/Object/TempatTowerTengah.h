@@ -1,5 +1,5 @@
 #pragma once
-#include "Mesh.h"
+#include "../Headers/Mesh.h"
 #include <iostream>
 
 static Mesh* TempatTowerTengah()

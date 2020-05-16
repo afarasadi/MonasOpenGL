@@ -1,4 +1,4 @@
-#include "Texture.h"
+#include "../Headers/Texture.h"
 #include <SOIL/SOIL.h>
 #include <iostream>
 

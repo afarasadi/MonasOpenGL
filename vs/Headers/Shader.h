@@ -2,8 +2,8 @@
 
 #include <string>
 #include <GLAD/glad.h>
-#include "Transform.h"
-#include "Camera.h"
+#include "../Headers/Transform.h"
+#include "../Headers/Camera.h"
 
 class Shader
 {
