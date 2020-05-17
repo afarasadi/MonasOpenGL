@@ -2,7 +2,7 @@
 	
 int main()
 {
-	RenderEngine e = RenderEngine(800, 600, "Final Project Monas", true, false);
+	RenderEngine e = RenderEngine(1366, 768, "Final Project Monas", true, false);
 	Display &d = e;
 
 	return 0;

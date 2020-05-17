@@ -46,12 +46,12 @@ static Mesh* TowerMonasAtas()
 	};
 
 	unsigned int indices[] = {
-		8,  9,  10, 8,  10, 11,  // back
+		8,  10,  9, 8,  11, 10,  // back
 		20, 22, 21, 20, 23, 22,   // bottom
-		4,  5,  6,  4,  6,  7,   // right
+		4,  6,  5,  4,  7,  6,   // right
 		12, 14, 13, 12, 15, 14,  // left
 		16, 18, 17, 16, 19, 18,  // upper
-		0,  1,  2,  0,  2,  3   // front
+		0,  2,  1,  0,  3,  2   // front
 
 	};
 

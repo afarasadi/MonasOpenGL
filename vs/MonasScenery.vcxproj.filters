@@ -36,6 +36,9 @@
     <ClCompile Include="..\deps\include\glad\glad.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\Mesh2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Shaders\PlainTriangle.frag">
@@ -56,6 +59,8 @@
     <None Include="Shaders\Triangle.vert">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="Shaders\Triangle4v.frag" />
+    <None Include="Shaders\Triangle4v.vert" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\grass.png">
@@ -85,6 +90,30 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\deps\include\glad\glad.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\Mesh2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Objects\TowerMonasTengah2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Objects\TempatTowerTengah2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Objects\TempatTowerBawah2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Objects\TowerMonasTempatPucuk2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Objects\TowerMonasKotakPucuk2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Objects\TowerMonasAtas2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Objects\Pucuk.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

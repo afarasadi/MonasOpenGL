@@ -152,6 +152,7 @@
   <ItemGroup>
     <ClCompile Include="..\deps\include\glad\glad.c" />
     <ClCompile Include="Sources\Display.cpp" />
+    <ClCompile Include="Sources\Mesh2.cpp" />
     <ClCompile Include="Sources\RenderEngine.cpp" />
     <ClCompile Include="Sources\Main.cpp" />
     <ClCompile Include="Sources\Mesh.cpp" />
@@ -165,6 +166,8 @@
     <None Include="Shaders\Texture.vert" />
     <None Include="Shaders\Triangle.frag" />
     <None Include="Shaders\Triangle.vert" />
+    <None Include="Shaders\Triangle4v.frag" />
+    <None Include="Shaders\Triangle4v.vert" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\grass.png" />
@@ -175,9 +178,17 @@
     <ClInclude Include="Headers\Display.h" />
     <ClInclude Include="Headers\Engine.h" />
     <ClInclude Include="Headers\Mesh.h" />
+    <ClInclude Include="Headers\Mesh2.h" />
     <ClInclude Include="Headers\Shader.h" />
     <ClInclude Include="Headers\Texture.h" />
     <ClInclude Include="Headers\Transform.h" />
+    <ClInclude Include="Objects\Pucuk.h" />
+    <ClInclude Include="Objects\TempatTowerBawah2.h" />
+    <ClInclude Include="Objects\TempatTowerTengah2.h" />
+    <ClInclude Include="Objects\TowerMonasAtas2.h" />
+    <ClInclude Include="Objects\TowerMonasKotakPucuk2.h" />
+    <ClInclude Include="Objects\TowerMonasTempatPucuk2.h" />
+    <ClInclude Include="Objects\TowerMonasTengah2.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
