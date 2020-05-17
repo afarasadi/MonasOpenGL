@@ -164,7 +164,7 @@ void RenderEngine::Init() {
 	glfwSetInputMode(this->window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 	glfwSetKeyCallback(window, key_callback);
 
-	camera = new Camera(glm::vec3(0, 20, 50), 70.0f, (GLfloat)this->screenWidth / (GLfloat)this->screenHeight, .1f, 50.0f);
+	camera = new Camera(glm::vec3(0, 20, 50), 70.0f, (GLfloat)this->screenWidth / (GLfloat)this->screenHeight, .1f, 250.0f);
 
 
 	light = new Light();
